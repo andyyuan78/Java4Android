@@ -1,5 +1,4 @@
-
-
+p1
 java -version显示证券，但是找不到javac
 
 . 是当前目录!
@@ -9,7 +8,68 @@ CLASSPATH   .;C:\Program Files (x86)\Java\jre7\lib
 JAVA_HOME C:\Program Files\Java\jdk1.7.0_45
 PATH C:\Program Files\Java\jdk1.7.0_45\bin
 
+
+
+
 需要关闭cmd再开启！
 
-javac hello.java
+javac Hello.java
+java Hello
+
+直接java Hello即可，不要在hello后面加上.java后缀。你要是加了，
+编译器就会去找Hello.java.class的文件，可是实际上你的是Hello.class的文件，
+自然就会找不到了啊。你看清楚我的回答javac Hello.java，
+编译是要加上后缀名的，java Hello解释是不需要加上后缀名的
+
+
+jre --java运行时环境, 包括java虚拟机，java平台核心类文件，其他支持文件！
+
+
+p2
+javac 找不到或无法加载主类
+
+博客园
+闪存
+首页
+新随笔
+联系
+管理
+订阅 订阅
+
+随笔- 1  文章- 0  评论- 3  
+   
+
+
+在CMD下用java命令出现“找不到或无法加载主类”问题 
+-----我的系统变量是---.;C:\Program Files (x86)\Java\jre7\lib
+-----我的用户变量是---C:\Program Files (x86)\Java\jre7\lib
+结果出现错误,可能是用户变量会优先!--改为一致就好了
+
+
+
+问题描述：
+
+编写简单的Hello.java程序，在cmd命令行下用javac Hello.java命令编译没有问题，
+可以生成Hello.class文件。但输入java Hello命令后（文件目录和命令目录一致），
+提示错误：“找不到或无法加载主类”。
+
+ 
+
+解决思路：
+
+从网上查找原因和解决方法，有提到环境变量classpath设置问题，但多次尝试问题依旧没有解决。然后使用java -cp %classpath; Hello执行，结果正确。
+
+使用echo %classpath% 或者 set classpath，查看classpath环境变量值，发现只是显示当前用户变量中的classpath值，而不是系统变量中的classpath值。
+
+ 
+
+解决方法1：
+
+将系统变量中的classpath值添加到用户变量中，然后执行java Hello，成功！使用java -cp %classpath; Hello执行，仍正确！
+
+ 
+
+解决方法2：
+
+在系统变量中的classpath值中添加  ,;
 
